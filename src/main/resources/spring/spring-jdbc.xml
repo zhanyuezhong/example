@@ -34,6 +34,6 @@
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.zyz.dao"/>
+        <property name="basePackage" value="com.zyz.mysql.dao"/>
     </bean>
 </beans>

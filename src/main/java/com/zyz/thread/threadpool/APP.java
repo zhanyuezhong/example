@@ -1,4 +1,4 @@
-package com.zyz.threadpool;
+package com.zyz.thread.threadpool;
 
 /**
  * User: 张月忠

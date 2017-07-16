@@ -1,8 +1,7 @@
-package com.zyz.cyclicbarrier;/**
+package com.zyz.thread.threadpool.cyclicbarrier;/**
  * Created by zyz46160 on 2017/7/16.
  */
 
-import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 /**

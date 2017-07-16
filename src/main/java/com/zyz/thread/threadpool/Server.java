@@ -1,4 +1,4 @@
-package com.zyz.threadpool;
+package com.zyz.thread.threadpool;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
