@@ -1,4 +1,4 @@
-package com.zyz.threadpool;
+package com.zyz.thread.threadpool;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
