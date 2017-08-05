@@ -28,10 +28,19 @@ public class Server {
         System.out.println("=================done==============");
         System.out.printf("pool active %d \n",threadPoolExecutor.getActiveCount());
         System.out.printf("pool compelete %d \n",threadPoolExecutor.getCompletedTaskCount());
+
     }
 
     public void shutDown(){
         System.out.println("=================shutdown==============");
         threadPoolExecutor.shutdown();
+    }
+
+    public ThreadPoolExecutor getThreadPoolExecutor() {
+        return threadPoolExecutor;
+    }
+
+    public void setThreadPoolExecutor(ThreadPoolExecutor threadPoolExecutor) {
+        this.threadPoolExecutor = threadPoolExecutor;
     }
 }

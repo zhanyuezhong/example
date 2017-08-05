@@ -1,6 +1,7 @@
 package com.zyz.thread.threadpool;
 
 import java.util.Date;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,7 +15,6 @@ public class Task implements Runnable {
     private String name;
 
     private Date initDate;
-
     public Task(String name) {
         this.name = name;
         this.initDate = new Date();
