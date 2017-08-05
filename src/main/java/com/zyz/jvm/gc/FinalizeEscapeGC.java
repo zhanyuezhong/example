@@ -8,13 +8,23 @@ package com.zyz.jvm.gc;/**
  */
 public class FinalizeEscapeGC {
 
-    private static FinalizeEscapeGC save_hook;
+    private  FinalizeEscapeGC save_hook;
 
     public void isAlived(){
         System.out.println("yes i am is alive...");
     }
     public static void main(String[] args){
+        FinalizeEscapeGC gc = new FinalizeEscapeGC();
+        System.out.println(gc);
+        gc.testGc();
+
+
+    }
+
+    private  void testGc() {
         save_hook = new FinalizeEscapeGC();
+        System.out.println(save_hook);
+
         save_hook = null;
         ///////第一次拯救
         System.gc();
@@ -45,14 +55,13 @@ public class FinalizeEscapeGC {
             System.out.println("dead");
 
         }
-
-
     }
 
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
         System.out.println("finalize method execute");
+        System.out.println(this);
         save_hook = this;
     }
 }
