@@ -26,6 +26,7 @@ public class ZooKeeperTest {
             zooKeeper = new ZooKeeper(zkUrl, 1000, new Watcher() {
                 @Override
                 public void process(WatchedEvent watchedEvent) {
+                    watchedEvent.getState();
                     if(Event.KeeperState.SyncConnected == watchedEvent.getState())
                         countDownLatch.countDown();
                 }
