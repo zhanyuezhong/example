@@ -2,6 +2,8 @@ import org.junit.Test;
 
 import java.io.*;
 import java.text.MessageFormat;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * User: 张月忠
@@ -125,29 +127,41 @@ public class DeleteSql {
     @Test
     public void buildODSQL() throws Exception {
         String inPath = "/Users/zhangyuezhong/Desktop/1.csv";
-        String outName = "/Users/zhangyuezhong/Downloads/odpool_out.sql";
+        String outName = "/Users/zhangyuezhong/Desktop/odpool_out.sql";
         File file = new File(inPath);
         File out = new File(outName);
+
+        Set<String> odSet = new HashSet<>(1999);
+
         String sqlTemplate = "insert into  od_pool (origin,dest,frequency,status,fare_count,airline,create_time,update_time) values ({0},{1},{2},{3},{4},{5},now(),now()); ";
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream(out, true)));
+                new FileOutputStream(out, false)));
         String line;
+        bufferedReader.readLine();
         while ((line = bufferedReader.readLine()) != null) {
             String[] split = line.split(",");
 
             String o = split[0];
             String d = split[1];
-            String a = split[2];
-            String f1 = MessageFormat.format(sqlTemplate, "'"+o+"'", "'"+d+"'","'"+"F1"+"'","'"+"1"+"'","'"+0+"'","'"+a+"'");
-            String f2 = MessageFormat.format(sqlTemplate, "'"+o+"'", "'"+d+"'","'"+"F2"+"'","'"+"1"+"'","'"+0+"'","'"+a+"'");
+            odSet.add(o+","+d);
+        }
+        System.out.println(odSet.size());
+        for(String od:odSet){
+            String[] split = od.split(",");
+
+            String o = split[0];
+            String d = split[1];
+            String f1 = MessageFormat.format(sqlTemplate, "'"+o+"'", "'"+d+"'",10,1,"'"+0+"'","''");
+            String f2 = MessageFormat.format(sqlTemplate, "'"+o+"'", "'"+d+"'",20,1,"'"+0+"'","''");
             writer.write(f1);
             writer.newLine();
             writer.write(f2);
             writer.newLine();
         }
+
         writer.close();
         bufferedReader.close();
 
