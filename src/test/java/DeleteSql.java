@@ -2,8 +2,11 @@ import org.junit.Test;
 
 import java.io.*;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
 
 /**
  * User: 张月忠
@@ -31,7 +34,8 @@ public class DeleteSql {
         String sqlTemplate = "delete from ie_fare where id={0} and  dep_city={1} and arr_city={2} ; ";
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
-
+        List<String> list = new ArrayList<>();
+//        list.stream().filter()
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(out, true)));
         String line;
